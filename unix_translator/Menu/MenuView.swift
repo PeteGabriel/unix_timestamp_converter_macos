@@ -16,6 +16,7 @@ struct MenuView: View {
     
     //unix time given to convert
     @State var unixTime: String
+    @State var formatedTime: String
     
     var body: some View {
         VStack {
@@ -24,23 +25,48 @@ struct MenuView: View {
                 .font(.headline)
             
             VStack {
-                UnixTimeTextField(unixTime: $unixTime)
+                HStack(alignment: .center, spacing: 10.0) {
+                    VStack(alignment: .leading) {
+                        Text("Unix timestamp")
+                            .frame(alignment: .bottom)
+                            .fontDesign(.serif)
+                            .font(.callout)
+                            .italic(true)
+                        
+                        UnixTimeTextField(unixTime: $unixTime)
+                    }
+                    .frame(maxHeight: 50)
+                    
+                    
+                    VStack(alignment: .leading){
+                        Text("Formatted time")
+                            .fontDesign(.serif)
+                            .font(.callout)
+                            .italic(true)
+                        Spacer()
+                        Text(formatedTime)
+                    }
+                    .frame(maxHeight: 43)
+
+                }
+                .frame(width: .infinity)
                 ConvertTimeButton(title: "Convert", currentTab: $currentTab)
             }
-            .padding(.horizontal)
             .padding(.top)
+            .frame(width: .infinity)
             
-            
-            Spacer(minLength: 0)
         }
-        .frame(width: 250, height: 200)
+        .frame(width: 320, height: 140)
     }
 }
 
 struct MenuView_Previews: PreviewProvider {
     static var previews: some View {
+        
         let currentUnixTime = String(format:"%.0f", Date.now.timeIntervalSince1970)
-        MenuView(unixTime: currentUnixTime)
+        let currentFormatedTime = Date.now.formatted(.iso8601)
+        
+        MenuView(unixTime: currentUnixTime, formatedTime: currentFormatedTime)
     }
 }
 
