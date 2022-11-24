@@ -7,6 +7,10 @@
 
 import SwiftUI
 
+let UnixTimeText = "Unix timestamp"
+let FormattedTimeText = "Formatted time"
+let TitleText = "Unix timestamp converter"
+
 struct MenuView: View {
     //slide animation
     @Namespace var slideAnimation
@@ -17,14 +21,14 @@ struct MenuView: View {
     
     var body: some View {
         VStack {
-            Text("Unix timestamp converter")
+            Text(TitleText)
                 .bold()
                 .font(.headline)
             
             VStack {
                 HStack(alignment: .center, spacing: 4.0) {
                     VStack(alignment: .leading) {
-                        Text("Unix timestamp")
+                        Text(UnixTimeText)
                             .frame(alignment: .bottom)
                             .fontDesign(.serif)
                             .font(.callout)
@@ -36,7 +40,7 @@ struct MenuView: View {
                     
                     
                     VStack(alignment: .leading){
-                        Text("Formatted time")
+                        Text(FormattedTimeText)
                             .fontDesign(.serif)
                             .font(.callout)
                             .italic(true)
@@ -101,6 +105,6 @@ struct ConvertTimeButton: View {
                             .fill(.blue)
                     }
                 )
-        })
+        }).buttonStyle(PlainButtonStyle())
     }
 }
