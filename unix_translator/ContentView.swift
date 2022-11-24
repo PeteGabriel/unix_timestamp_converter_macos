@@ -9,9 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            MenuView(unixTime: "", formattedTime: "")
-        }.frame(width: 320, height: 140)
+        EmptyView()
     }
 }
 
